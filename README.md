@@ -7,7 +7,7 @@ Ahoy world!  I'm a Helm repository for example charts.
 Add this repository to Helm.
 
 ```
-helm repo add examples https://adamreese.github.io/examples
+helm repo add examples https://helm.github.io/examples
 ```
 
 Install an example.
