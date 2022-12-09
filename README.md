@@ -1,17 +1,20 @@
-# Helm Example Repository
+# Usage
 
-Ahoy world!  I'm a Helm repository for example charts.
+[Helm](https://helm.sh) must be installed to use the charts.  Please refer to
+Helm's [documentation](https://helm.sh/docs) to get started.
 
-## Get started
+Once Helm has been set up correctly, add the repo as follows:
 
-Add this repository to Helm.
+  helm repo add kyblik https://kyblik.github.io/helm-charts
 
-```
-helm repo add examples https://helm.github.io/examples
-```
+If you had already added this repo earlier, run `helm repo update` to retrieve
+the latest versions of the packages.  You can then run `helm search repo
+kyblik` to see the charts.
 
-Install an example.
+To install the `hello-world` chart:
 
-```
-helm install ahoy examples/hello-world
-```
+    helm install hello-world kyblik/hello-world
+
+To uninstall the chart:
+
+    helm delete hello-world
