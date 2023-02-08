@@ -6,7 +6,7 @@ metadata:
   labels:
     argocd.argoproj.io/instance: applications-dev
   name: pe-poc-dev
-  namespace: argocd
+  namespace: default
 spec:
   destination:
     namespace: pe-poc-dev
