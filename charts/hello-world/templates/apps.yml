@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    argocd.argoproj.io/instance: applications-dev
+  name: pe-poc-dev
+  namespace: argocd
+spec:
+  destination:
+    namespace: pe-poc-dev
+    server: >-
+      https://016E903473BC201AFCDE2BCAAF7A858E.gr7.ap-south-1.eks.amazonaws.com
+  project: pe-poc-dev
+  source:
+    helm:
+      releaseName: pe-poc-dev
+      valueFiles:
+        - values.yaml
+      version: v3
+    path: charts/hello-world
+    repoURL: >-
+      https://github.com/ojp2/preview-environ.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+    syncOptions:
+      - Validate=true
+      - CreateNamespace=true
