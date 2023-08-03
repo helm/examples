@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "hello-world.fullname" . }}
+  namespace: test
+  annotations:
+    "kubernetes.io/ingress.class": public
+    "nginx.ingress.kubernetes.io/force-ssl-redirect": "true"
+    "nginx.ingress.kubernetes.io/ssl-passthrough": "true"
+    "nginx.ingress.kubernetes.io/backend-protocol": "HTTP"
+spec:
+  rules:
+    - host: hello.app.box
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "hello-world.fullname" . }}
+                port:
+                  number: 80
