@@ -25,3 +25,7 @@ serviceAccount:
 service:
   type: ClusterIP
   port: 80
+  targetPort: 8081
+
+deployment:
+  containerPort: 8081
